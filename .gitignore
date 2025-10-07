@@ -1,0 +1,9 @@
+package-lock.json
+node_modules/
+dist/
+webpack-stats.json
+db.sqlite3
+bundles/
+env/
+.vercel
+.env
