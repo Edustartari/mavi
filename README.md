@@ -7,4 +7,5 @@ python manage.py runserver
 ### For Frontend
 # Enter frontend folder and install npm 
 npm i
+# Run front
 npm run start
