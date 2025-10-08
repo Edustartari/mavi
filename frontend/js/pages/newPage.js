@@ -5,20 +5,15 @@ import Button from '@mui/material/Button';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import CircularProgress from '@mui/material/CircularProgress';
-import {
-    Routes,
-    Route
-} from "react-router-dom";
-import Home from './pages/home';
-import NewPage from './pages/newPage';
+import { useStore } from '../store/main';
+import axios from 'axios';
+import { Link } from "react-router-dom";
 
-export default function App() {
+export default function NewPage() {
   return (
-    <>
-      <Routes>
-          <Route path="/new-page/:slug" element={<NewPage />} />
-          <Route path="/" element={<Home />} />
-      </Routes>
-    </>
+    <div className='app-main-background'>
+      New Page
+      <Link to="/">Back to home</Link>
+    </div>
   );
 }

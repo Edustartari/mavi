@@ -1,7 +1,9 @@
 import { create } from 'zustand'
 
 export const useStore = create((set) => ({
-  initialState: {},
+  initialState: {
+    key1: 'value1',
+  },
   updateValue: (key, newValue) => {
     set((state) => {
       const newDict = { ...state.initialState };

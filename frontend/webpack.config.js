@@ -98,6 +98,8 @@ module.exports = {
 		extensions: ['.ts', '.js', '.jsx', '.css'],
 		alias: {
 		   "@": path.resolve(__dirname, ""),
+			// styles: path.resolve(__dirname, "src/styles/"),
+			// images: path.resolve(__dirname, "src/img/"),
 		}
 	},
 }
