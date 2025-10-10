@@ -1,16 +1,3 @@
-import React, { useState, useEffect } from 'react';
-import '/css/App.css';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import CircularProgress from '@mui/material/CircularProgress';
-import { useStore } from '../store/main';
-import axios from 'axios';
-import { Link } from "react-router-dom";
-
-/* 
-
 In this interview, you will build a simple Pokedex application using the PokéAPI. The goal is to demonstrate your frontend development skills, decision-making, and ability to work with external APIs.
 
 The app should have two main pages:
@@ -20,7 +7,7 @@ The app should have two main pages:
 
 Requirements
 
-Fetch Pokémon data from PokéAPI (https://pokeapi.co/)
+Fetch Pokémon data from PokéAPI (https://pokeapi.co/) https://pokeapi.co/api/v2/pokemon
 Implement a list view that shows multiple Pokémon. The layout (grid, cards, table, etc.) is up to you.
 Enable navigation to a detail page when a Pokémon is clicked.
 The details page should display key information about that Pokémon (you decide what information is most relevant).
@@ -56,14 +43,3 @@ Grid vs. List Toggle – Let the user choose how to view Pokémon.
 Hover States & Animations – Smooth transitions when selecting a Pokémon.
 Consistent Styling – A simple design system or CSS framework (e.g., Tailwind, Bootstrap)
 Responsive Layout – Adjust the grid/list for mobile vs. desktop.
-
-*/
-
-export default function NewPage() {
-  return (
-    <div className='app-main-background'>
-      New Page
-      <Link to="/">Back to home</Link>
-    </div>
-  );
-}

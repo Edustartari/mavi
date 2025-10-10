@@ -23,7 +23,6 @@ export default function Home() {
     <div className='app-main-background' onClick={() => updateValue('key1', 'value2')}>
       Test {currentState.key1}
       <Button variant="contained" onClick={fetchData}>Fetch Data</Button>
-      <Link to="/new-page/1">Go to New Page</Link>
     </div>
   );
 }
