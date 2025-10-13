@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '/css/App.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useStore } from '../store/main';
 import axios from 'axios';
@@ -18,14 +16,6 @@ import Select from '@mui/material/Select';
   - Fetch data using API
   - Create logic to include search bar for the current data list (that was already fetched)
   - Create logic with pagination, so each time user clicks next or previous, I will fetch new data
-  - Include button to sort by name
-*/
-
-/*
-  ListPageV3
-  - Fetch data using API
-  - Create a second search bar that will try to find by name or id (Use debounce)
-  - Create logic with Infinite Scroll / Lazy Loading – Continuously load more Pokémon as the user scrolls.
   - Include button to sort by name
 */
 

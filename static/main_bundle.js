@@ -16,7 +16,7 @@
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   useStore: () => (/* binding */ useStore)\n/* harmony export */ });\n/* harmony import */ var zustand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zustand */ \"./node_modules/zustand/esm/react.mjs\");\n\nconst useStore = (0,zustand__WEBPACK_IMPORTED_MODULE_0__.create)(set => ({\n  initialState: {\n    key1: 'value1'\n  },\n  updateValue: (key, newValue) => {\n    set(state => {\n      const newDict = {\n        ...state.initialState\n      };\n      newDict[key] = newValue;\n      return {\n        initialState: newDict\n      };\n    });\n  }\n}));\n\n//# sourceURL=webpack://frontend/./js/store/main.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   useStore: () => (/* binding */ useStore)\n/* harmony export */ });\n/* harmony import */ var zustand__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! zustand */ \"./node_modules/zustand/esm/react.mjs\");\n\nconst useStore = (0,zustand__WEBPACK_IMPORTED_MODULE_0__.create)(set => ({\n  initialState: {\n    key1: 'value1',\n    pokemonsList: []\n  },\n  updateValue: (key, newValue) => {\n    set(state => {\n      const newDict = {\n        ...state.initialState\n      };\n      newDict[key] = newValue;\n      return {\n        initialState: newDict\n      };\n    });\n  }\n}));\n\n//# sourceURL=webpack://frontend/./js/store/main.js?\n}");
 
 /***/ }),
 

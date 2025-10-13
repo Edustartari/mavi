@@ -23,6 +23,13 @@ export default function Home() {
     <div className='app-main-background' onClick={() => updateValue('key1', 'value2')}>
       Test {currentState.key1}
       <Button variant="contained" onClick={fetchData}>Fetch Data</Button>
+
+      <h2>{currentState.pokemonsList.length > 0 ? 'Current Pokemons List' : ''}</h2>
+      <div>
+        {currentState.pokemonsList && currentState.pokemonsList.map(pokemon => (
+          <div key={pokemon.name}>{pokemon.name}</div>
+        ))}
+      </div>
     </div>
   );
 }
