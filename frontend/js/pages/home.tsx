@@ -6,11 +6,7 @@ import { useStore } from '../store/main';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-<<<<<<< HEAD
-export default function Home() {
-=======
 export default function Home(): JSX.Element {
->>>>>>> 42472bd (update config to accept typescript)
   const updateValue = useStore((state: any) => state.updateValue);
   const currentState = useStore((state: any) => state.initialState);
 
