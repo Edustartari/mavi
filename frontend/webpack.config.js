@@ -25,9 +25,10 @@ for (var i = folder_pool.length - 1; i >= 0; i--) {
 	for (var j= files.length - 1; j >= 0; j--) {
 		var file = files[j];
 
-		if(file.includes('.js')){
+				// accept .js, .jsx, .ts, .tsx as entry files
+				if(file.includes('.js') || file.includes('.jsx') || file.includes('.ts') || file.includes('.tsx')){
 			entries[file] = path.join(current_folder, file);
-		} else {
+				} else {
 			let inside_files = fs.readdirSync(path.join(current_folder, file));
 			for (let j= inside_files.length - 1; j >= 0; j--) {
 				let inside_file = inside_files[j];
@@ -76,9 +77,9 @@ module.exports = {
     module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
-				loader: 'babel-loader',
-				exclude: /node_modules/,
+					test: /\.(j|t)sx?$/,
+					loader: 'babel-loader',
+					exclude: /node_modules/,
 			},
             {
                 test: /\.css$/i,
@@ -95,7 +96,7 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions: ['.ts', '.js', '.jsx', '.css'],
+		extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
 		alias: {
 		   "@": path.resolve(__dirname, ""),
 			// styles: path.resolve(__dirname, "src/styles/"),

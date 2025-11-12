@@ -10,8 +10,8 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const updateValue = useStore((state) => state.updateValue);
-  const currentState = useStore((state) => state.initialState);
+  const updateValue = useStore((state: any) => state.updateValue);
+  const currentState = useStore((state: any) => state.initialState);
 
   const fetchData = async () => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1');

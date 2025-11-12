@@ -28,8 +28,8 @@ export default function App() {
         </Link>
       </MenuList>
       <Routes>
-          <Route path="/new-page/:slug" element={<NewPage />} />
-          <Route path="/" element={<Home />} />
+        <Route path="/new-page/:slug" element={<NewPage />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </>
   );
