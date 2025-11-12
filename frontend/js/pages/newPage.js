@@ -9,56 +9,6 @@ import { useStore } from '../store/main';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-/* 
-
-In this interview, you will build a simple Pokedex application using the PokéAPI. The goal is to demonstrate your frontend development skills, decision-making, and ability to work with external APIs.
-
-The app should have two main pages:
-
-1. List Page – Display a list/grid of Pokémon fetched from the API.
-2. Details Page – Show details for an individual Pokémon when the user clicks on it.
-
-Requirements
-
-Fetch Pokémon data from PokéAPI (https://pokeapi.co/)
-Implement a list view that shows multiple Pokémon. The layout (grid, cards, table, etc.) is up to you.
-Enable navigation to a detail page when a Pokémon is clicked.
-The details page should display key information about that Pokémon (you decide what information is most relevant).
-
-Environment:
-
-You may use any framework, library, or language you are comfortable with (React, Vue, Angular, vanilla JS, etc.).
-You may use any IDE, tools, AI autocomplete (e.g., Copilot/ChatGPT), or online resources.
-Focus on writing clear, maintainable code and making thoughtful trade-offs.
-
-Possible Feature Adds:
-
-Base Requirements:
-
-Fetch & Display Pokémon – Use the PokéAPI to show a list/grid of Pokémon with names and/or images.
-Navigation to Detail Page – Clicking a Pokémon shows a details page.
-Details Page Content – Show at least a Pokémon’s name, image, type(s), and basic stats (HP, attack, defense, etc.).
-
-
-Feature Adds:
-
-Search by Name/ID – A text input to quickly find a Pokémon.
-Filtering – By type (e.g., Water, Fire) or other attributes.
-Pagination – Classic “Previous / Next” buttons or page numbers.
-Infinite Scroll / Lazy Loading – Continuously load more Pokémon as the user scrolls.
-Sorting – Alphabetical, by ID, or by type.
-Debounce Search Input – To reduce API calls while typing.
-
-
-UI Improvements:
-
-Grid vs. List Toggle – Let the user choose how to view Pokémon.
-Hover States & Animations – Smooth transitions when selecting a Pokémon.
-Consistent Styling – A simple design system or CSS framework (e.g., Tailwind, Bootstrap)
-Responsive Layout – Adjust the grid/list for mobile vs. desktop.
-
-*/
-
 export default function NewPage() {
   return (
     <div className='app-main-background'>
