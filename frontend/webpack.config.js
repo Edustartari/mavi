@@ -3,12 +3,12 @@ var webpack = require('webpack');
 var BundleTracker = require('webpack-bundle-tracker');
 var fs = require('fs');
 
-// Create and entry dict
+// Create an entry dict
 var entries = {}
 
 console.log(path.join(__dirname, '', 'js'))
 
-// JSX entrypoints
+// entrypoints (include .js, .jsx, .ts, .tsx)
 var folder_pool = [
 	path.join(__dirname, '', 'js'),
 ]
@@ -19,23 +19,44 @@ for (var i = folder_pool.length - 1; i >= 0; i--) {
 	
 	// List all the files in the current folder
 	var files = fs.readdirSync(path.join(current_folder));
-	// files = [ 'components', 'containers', 'index.js' ]
 
-	// Append all the keys to the dict
+	// Choose the preferred file per basename (priority: .tsx, .ts, .jsx, .js)
+	const priority = ['.tsx', '.ts', '.jsx', '.js'];
+	const candidates = {};
+
 	for (var j= files.length - 1; j >= 0; j--) {
 		var file = files[j];
-
-				// accept .js, .jsx, .ts, .tsx as entry files
-				if(file.includes('.js') || file.includes('.jsx') || file.includes('.ts') || file.includes('.tsx')){
-			entries[file] = path.join(current_folder, file);
-				} else {
+		if (file.endsWith('.js') || file.endsWith('.jsx') || file.endsWith('.ts') || file.endsWith('.tsx')){
+			const base = file.replace(/\.(js|jsx|ts|tsx)$/, '');
+			candidates[base] = candidates[base] || [];
+			candidates[base].push({ name: file, full: path.join(current_folder, file) });
+		} else {
 			let inside_files = fs.readdirSync(path.join(current_folder, file));
-			for (let j= inside_files.length - 1; j >= 0; j--) {
-				let inside_file = inside_files[j];
-				entries[inside_file] = path.join(path.join(current_folder, file), inside_file);
+			for (let k= inside_files.length - 1; k >= 0; k--) {
+				let inside_file = inside_files[k];
+				if (inside_file.endsWith('.js') || inside_file.endsWith('.jsx') || inside_file.endsWith('.ts') || inside_file.endsWith('.tsx')){
+					const base = inside_file.replace(/\.(js|jsx|ts|tsx)$/, '');
+					candidates[base] = candidates[base] || [];
+					candidates[base].push({ name: inside_file, full: path.join(path.join(current_folder, file), inside_file) });
+				}
 			}
 		}
 	}
+
+	// pick highest priority candidate per base
+	Object.keys(candidates).forEach((base) => {
+		const filesArr = candidates[base];
+		// find by priority
+		let picked = null;
+		for (let p = 0; p < priority.length; p++) {
+			const ext = priority[p];
+			const found = filesArr.find(f => f.name.endsWith(ext));
+			if (found) { picked = found; break; }
+		}
+		if (picked) {
+			entries[picked.name] = picked.full;
+		}
+	});
 }
 
 // entries = {
@@ -56,16 +77,18 @@ module.exports = {
 			var extension = pathData.chunk.name.split('.').pop();
 			var name = pathData.chunk.name.replace('.' + extension, '');
 
-			if (extension === 'js') {
-				// eslint-disable-next-line
-				var output_extension = 'js'
-			}
-			if (extension === 'css') {
-				// eslint-disable-next-line
-				var output_extension = 'css'
+			// Map source extensions to output extension
+			let output_extension;
+			if (['js', 'jsx', 'ts', 'tsx'].includes(extension)) {
+				output_extension = 'js';
+			} else if (extension === 'css') {
+				output_extension = 'css';
+			} else {
+				output_extension = extension || 'js';
 			}
 
-			return name + '_bundle.' + output_extension
+			// Include original extension in filename to avoid collisions when both .js and .ts/.tsx entries exist
+			return name + '_' + extension + '_bundle.' + output_extension
 		}
 	},  
 	plugins: [
@@ -82,6 +105,11 @@ module.exports = {
 					exclude: /node_modules/,
 			},
             {
+                test: /\.tsx?$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
+            },
+            {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"]
             },
@@ -96,7 +124,7 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
+		extensions: ['.tsx', '.ts', '.js', '.jsx', '.css'],
 		alias: {
 		   "@": path.resolve(__dirname, ""),
 			// styles: path.resolve(__dirname, "src/styles/"),

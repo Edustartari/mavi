@@ -1,18 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2019",
     "module": "ESNext",
     "jsx": "react-jsx",
-    "allowJs": true,
-    "checkJs": false,
+    "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
     "noEmit": true
   },
-  "include": ["./js/**/*", "./css/**/*"],
-  "exclude": ["node_modules", "dist", "build"]
+  "include": ["./js/**/*", "./src/**/*"]
 }

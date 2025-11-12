@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import '/css/App.css';
 import TextField from '@mui/material/TextField';
@@ -10,6 +11,13 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 export default function NewPage() {
+=======
+import React from 'react';
+import '/css/App.css';
+import { Link } from "react-router-dom";
+
+export default function NewPage(): JSX.Element {
+>>>>>>> 42472bd (update config to accept typescript)
   return (
     <div className='app-main-background'>
       New Page

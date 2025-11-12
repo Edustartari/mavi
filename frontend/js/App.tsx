@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '/css/App.css';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import CircularProgress from '@mui/material/CircularProgress';
 import {
     Routes,
     Route,
@@ -16,7 +11,7 @@ import NewPage from './pages/newPage';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 
-export default function App() {
+const App: React.FC = () => {
   return (
     <>
       <MenuList>
@@ -34,3 +29,5 @@ export default function App() {
     </>
   );
 }
+
+export default App;

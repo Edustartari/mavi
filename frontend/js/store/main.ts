@@ -1,26 +1,19 @@
 import { create } from 'zustand'
 
-export type InitialState = {
-  key1: string;
-  [key: string]: any;
+type StateShape = {
+  initialState: Record<string, string>
+  updateValue: (key: string, newValue: string) => void
 }
 
-export type StoreState = {
-  initialState: InitialState;
-  updateValue: (key: string, newValue: any) => void;
-}
-
-export const useStore = create<StoreState>((set) => ({
+export const useStore = create<StateShape>((set) => ({
   initialState: {
     key1: 'value1',
   },
-  updateValue: (key: string, newValue: any) => {
+  updateValue: (key: string, newValue: string) => {
     set((state) => {
-      const newDict: InitialState = { ...state.initialState };
+      const newDict = { ...state.initialState };
       newDict[key] = newValue;
       return { initialState: newDict };
     });
   },
-}));
-
-export default useStore;
+}))
